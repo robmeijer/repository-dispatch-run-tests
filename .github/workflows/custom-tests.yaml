@@ -1,0 +1,19 @@
+---
+name: 'Custom: Tests'
+on:
+  repository_dispatch:
+    types: [ dev-deployed ]
+  workflow_dispatch:
+jobs:
+  tests:
+    name: 'Tests'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: 'Check out code'
+        uses: actions/checkout@v6
+
+      - name: 'Run Tests'
+        run: |
+          echo 'Running tests'
