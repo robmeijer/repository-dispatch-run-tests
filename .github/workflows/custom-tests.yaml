@@ -3,7 +3,6 @@ name: 'Custom: Tests'
 on:
   repository_dispatch:
     types: [ dev-deployed ]
-  workflow_dispatch:
 jobs:
   tests:
     name: 'Tests'
@@ -16,4 +15,5 @@ jobs:
 
       - name: 'Run Tests'
         run: |
-          echo 'Running tests'
+          echo 'Triggered by "${{ github.event.client_payload.repository }}" repository.'
+          echo 'Running tests on the "${{ github.event.client_payload.environment }}" environment.'
